@@ -17,8 +17,8 @@ Route::post('register', 'UserController@register');
 Route::post('login', 'UserController@login'); //do login
 
     Route::group(['middleware' => ['jwt.verify']], function () {
-
-
+        Route::get('login/check', "UserController@LoginCheck"); //cek token
+        Route::post('logout', "UserController@logout"); //cek token
     Route::get('iklan', 'IklanController@iklan');
 
     Route::get('iklanall', 'IklanController@iklanAuth')->middleware('jwt.verify');

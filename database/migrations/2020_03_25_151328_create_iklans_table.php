@@ -18,6 +18,7 @@ class CreateIklansTable extends Migration
             $table->string('nama_barang');
             $table->string('alamat');
             $table->integer('harga');
+            $table->integer('no_telpon');
             $table->text('deskripsi');
             $table->string('gambar');
             $table->timestamps();

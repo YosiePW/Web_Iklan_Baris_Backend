@@ -19,7 +19,8 @@ class IklanController extends Controller
 	                "id"          => $p->id,
 	                "nama_barang" => $p->nama_barang,
 	                "alamat"      => $p->alamat,
-                    "harga"    	  => $p->harga,
+					"harga"    	  => $p->harga,
+                    "no_telpon"   => $p->no_telpon,
                     "deskripsi"   => $p->deskripsi,
                     "gambar"      => $p->gambar,                    
 	                "created_at"  => $p->created_at,
@@ -51,7 +52,8 @@ class IklanController extends Controller
 	                "id"          => $p->id,
 	                "nama_barang" => $p->nama_barang,
 	                "alamat"      => $p->alamat,
-                    "harga"    	  => $p->harga,
+					"harga"    	  => $p->harga,
+                    "no_telpon"   => $p->no_telpon,
                     "deskripsi"   => $p->deskripsi,
                     "gambar"      => $p->gambar,                    
 	                "created_at"  => $p->created_at,
@@ -78,7 +80,8 @@ class IklanController extends Controller
     		$validator = Validator::make($request->all(), [
     			'nama_barang'     => 'required|string|max:255',
 			    'alamat'		  => 'required|string|max:255',
-                'harga'			  => 'required|numeric',
+				'harga'			  => 'required|numeric',
+				'no_telpon'		  => 'required|numeric',
                 'deskripsi'		  => 'string',
 			    'gambar'		  => 'required',
     		]);
@@ -93,7 +96,8 @@ class IklanController extends Controller
     		$data = new Iklan();
 	        $data->nama_barang = $request->input('nama_barang');
 	        $data->alamat = $request->input('alamat');
-            $data->harga = $request->input('harga');
+			$data->harga = $request->input('harga');
+			$data->no_telpon = $request->input('no_telpon');
             $data->deskripsi = $request->input('deskripsi');
             $file = $request->file('gambar');
             $fileName   = $file->getClientOriginalName();
@@ -121,7 +125,8 @@ class IklanController extends Controller
       	$validator = Validator::make($request->all(), [
 			    'nama_barang'     => 'required|string|max:255',
 			    'alamat'		  => 'required|string|max:255',
-                'harga'			  => 'required|numeric',
+				'harga'			  => 'required|numeric',
+				'no_telpon'		  => 'required|numeric',
                 'deskripsi'		  => 'string',
 			    'gambar'		  => 'required',
 
@@ -138,7 +143,8 @@ class IklanController extends Controller
       	$data = Iklan::where('id', $id)->first();
         $data->nama_barang = $request->input('nama_barang');
         $data->alamat = $request->input('alamat');
-        $data->harga = $request->input('harga');
+		$data->harga = $request->input('harga');
+		$data->no_telpon = $request->input('no_telpon');
         $data->deskripsi = $request->input('deskripsi');
         if($request->file('gambar') == "")
         {
